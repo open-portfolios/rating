@@ -1,7 +1,7 @@
 package data
 
 import (
-	"review-service/internal/conf"
+	"github.com/open-portfolios/review/internal/conf"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/google/wire"

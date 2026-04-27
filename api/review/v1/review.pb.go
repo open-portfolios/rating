@@ -7,12 +7,13 @@
 package v1
 
 import (
-	_ "google.golang.org/genproto/googleapis/api/annotations"
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	_ "google.golang.org/genproto/googleapis/api/annotations"
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -486,7 +487,7 @@ const file_api_review_v1_review_proto_rawDesc = "" +
 	"\tGetReview\x12\x1f.api.review.v1.GetReviewRequest\x1a\x1d.api.review.v1.GetReviewReply\x12N\n" +
 	"\n" +
 	"ListReview\x12 .api.review.v1.ListReviewRequest\x1a\x1e.api.review.v1.ListReviewReplyB2\n" +
-	"\rapi.review.v1P\x01Z\x1freview-service/api/review/v1;v1b\x06proto3"
+	"\rapi.review.v1P\x01Z\x1fgithub.com/open-portfolios/review/api/review/v1;v1b\x06proto3"
 
 var (
 	file_api_review_v1_review_proto_rawDescOnce sync.Once

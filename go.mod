@@ -1,4 +1,4 @@
-module review-service
+module github.com/open-portfolios/review
 
 go 1.22
 

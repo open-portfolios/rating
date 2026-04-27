@@ -7,16 +7,14 @@
 package main
 
 import (
-	"review-service/internal/biz"
-	"review-service/internal/conf"
-	"review-service/internal/data"
-	"review-service/internal/server"
-	"review-service/internal/service"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
-)
+	"github.com/open-portfolios/review/internal/biz"
+	"github.com/open-portfolios/review/internal/conf"
+	"github.com/open-portfolios/review/internal/data"
+	"github.com/open-portfolios/review/internal/server"
+	"github.com/open-portfolios/review/internal/service"
 
-import (
 	_ "go.uber.org/automaxprocs"
 )
 

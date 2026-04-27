@@ -1,9 +1,9 @@
 package server
 
 import (
-	v1 "review-service/api/helloworld/v1"
-	"review-service/internal/conf"
-	"review-service/internal/service"
+	v1 "github.com/open-portfolios/review/api/helloworld/v1"
+	"github.com/open-portfolios/review/internal/conf"
+	"github.com/open-portfolios/review/internal/service"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"

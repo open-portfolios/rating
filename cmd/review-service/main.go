@@ -4,7 +4,7 @@ import (
 	"flag"
 	"os"
 
-	"review-service/internal/conf"
+	"github.com/open-portfolios/review/internal/conf"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/config"

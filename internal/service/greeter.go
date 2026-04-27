@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	v1 "review-service/api/helloworld/v1"
-	"review-service/internal/biz"
+	v1 "github.com/open-portfolios/review/api/helloworld/v1"
+	"github.com/open-portfolios/review/internal/biz"
 )
 
 // GreeterService is a greeter service.
