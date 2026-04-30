@@ -111,7 +111,7 @@ tasks:
     interactive: true
 
   all:
-    desc: Generate configuration, API and perform wire
+    desc: Perform `conf`, `api` and `wire` tasks
     cmds:
       - task: conf
       - task: api
@@ -135,7 +135,7 @@ tasks:
     silent: true
 
   wire:
-    desc: Wire DI
+    desc: Generate Dependency Injection code
     deps:
       - init
     cmds:

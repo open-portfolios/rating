@@ -2,6 +2,39 @@
 
 E-commerce comment review system.
 
+## Prerequisites
+
+### Container Engine
+
+This project uses [Podman](https://podman.io) as the container engine, but any OCI-compatible container engine should work.
+
+[Docker](https://www.docker.com) support is included.
+
+### Taskfile
+
+[Taskfile](https://taskfile.dev) is introduced as an alternative to Makefile. Instead of typing a cluster of long long commands, you can use `task <name>` to run a defined recipe.
+
+| Task            | Effect                                                            |
+| --------------- | ----------------------------------------------------------------- |
+| `task init`     | Install CLI tools needed for development                          |
+| `task up`       | Compose up containers                                             |
+| `task down`     | Shut down containers                                              |
+| `task clean`    | Shut down containers and **remove all data** (be careful!)        |
+| `task database` | Connect to the interactive shell of the database in the container |
+| `task migrate`  | Create tables according to the SQL files under [sql/](./sql)      |
+| `task serve`    | Run server                                                        |
+| `task all`      | Perform `conf`, `api` and `wire` tasks                            |
+| `task conf`     | Generate configuration protobuf                                   |
+| `task api`      | Generate API protobuf                                             |
+| `task wire`     | Generate Dependency Injection code                                |
+| `task build`    | Build executables                                                 |
+
+Taskfile uses the YAML format, and you will find it familiar if you have read GitHub Actions workflows before.
+
+### Go
+
+*The language we Gophers love*. The [Go](https://go.dev) version of this project is 1.22.
+
 ## License 
 
 Copyright 2026 Open Portfolios Authors
