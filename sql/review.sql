@@ -1,7 +1,3 @@
-CREATE DATABASE IF NOT EXISTS review;
-
-USE review;
-
 CREATE TABLE IF NOT EXISTS review_info (
     `id`              bigint(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
     `create_by`       varchar(48)         NOT NULL DEFAULT '' COMMENT '创建方标识',

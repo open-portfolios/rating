@@ -4,10 +4,12 @@ import (
 	"flag"
 	"os"
 
+	dotenv "github.com/joho/godotenv"
 	"github.com/open-portfolios/review/internal/conf"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/config"
+	"github.com/go-kratos/kratos/v2/config/env"
 	"github.com/go-kratos/kratos/v2/config/file"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/tracing"
@@ -30,7 +32,10 @@ var (
 )
 
 func init() {
-	flag.StringVar(&flagconf, "conf", "../../configs", "config path, eg: -conf config.yaml")
+	flag.StringVar(&flagconf, "conf", "configs", "config path, eg: -conf config.yaml")
+	if err := dotenv.Load(); err != nil {
+		log.Info(err)
+	}
 }
 
 func newApp(logger log.Logger, gs *grpc.Server, hs *http.Server) *kratos.App {
@@ -60,6 +65,7 @@ func main() {
 	)
 	c := config.New(
 		config.WithSource(
+			env.NewSource("REVIEW_"),
 			file.NewSource(flagconf),
 		),
 	)
@@ -73,6 +79,8 @@ func main() {
 	if err := c.Scan(&bc); err != nil {
 		panic(err)
 	}
+	log.Info(bc.Server)
+	log.Info(bc.Data)
 
 	app, cleanup, err := wireApp(bc.Server, bc.Data, logger)
 	if err != nil {

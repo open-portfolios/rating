@@ -2,6 +2,48 @@
 
 E-commerce comment review system.
 
+## Prerequisites
+
+### Container Engine
+
+This project uses [Podman](https://podman.io) as the container engine, but any OCI-compatible container engine should work.
+
+[Docker](https://www.docker.com) support is included.
+
+### Taskfile
+
+[Taskfile](https://taskfile.dev) is introduced as an alternative to Makefile. Instead of typing a cluster of long long commands, you can use `task <name>` to run a defined recipe.
+
+| Task            | Effect                                                            |
+| --------------- | ----------------------------------------------------------------- |
+| `task init`     | Install CLI tools needed for development                          |
+| `task up`       | Compose up containers                                             |
+| `task down`     | Shut down containers                                              |
+| `task clean`    | Shut down containers and **remove all data** (be careful!)        |
+| `task database` | Connect to the interactive shell of the database in the container |
+| `task migrate`  | Create tables according to the SQL files under [sql/](./sql)      |
+| `task serve`    | Run server                                                        |
+| `task all`      | Perform `conf`, `api` and `wire` tasks                            |
+| `task conf`     | Generate configuration protobuf                                   |
+| `task api`      | Generate API protobuf                                             |
+| `task wire`     | Generate Dependency Injection code                                |
+| `task build`    | Build executables                                                 |
+
+Taskfile uses the YAML format, and you will find it familiar if you have read GitHub Actions workflows before.
+
+### Go
+
+*The language we Gophers love*. The [Go](https://go.dev) version of this project is 1.22.
+
+## Deployment
+
+This project uses two types of configuration files:
+
+- [configs/config.yaml](configs/config.yaml) holds non‑sensitive, environment‑agnostic settings (e.g., service endpoints, logging levels, database connection pools). This file is safe to commit to version control and can be shared across team members.
+- .env stores sensitive information such as API secrets, tokens, passwords, or private keys. It is never committed to the repository (see [.gitignore](.gitignore)). Each developer or deployment environment maintains its own `.env` file. An example dotenv file is [.env.example](.env.example).
+
+Keeping secrets out of code and configuration repositories reduces the risk of accidental exposure. It also simplifies environment switching because only the .env file needs to change when moving between staging and production.
+
 ## License 
 
 Copyright 2026 Open Portfolios Authors
