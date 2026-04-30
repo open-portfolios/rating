@@ -45,9 +45,9 @@ vars:
   DATABASE_CONNECT_COMMAND: >-
     exec -it review-mysql mysql --default-character-set=utf8mb4 -h $REVIEW_MYSQL_HOST -P $REVIEW_MYSQL_PORT -uroot
     -p$REVIEW_MYSQL_ROOT_PASSWORD
-  DATABASE_REDIRECT_COMMAND: >-
-    exec -i review-mysql mysql --default-character-set=utf8mb4 -h $REVIEW_MYSQL_PORT -P $REVIEW_MYSQL_PORT -uroot
-    -p$REVIEW_MYSQL_ROOT_PASSWORD $REVIEW_MYSQL_DATABASE <
+  DATABASE_EXEC_COMMAND: >-
+    exec -i review-mysql mysql --default-character-set=utf8mb4 -h $REVIEW_MYSQL_HOST -P $REVIEW_MYSQL_PORT -uroot
+    -p$REVIEW_MYSQL_ROOT_PASSWORD
 
 tasks:
   init:
@@ -100,9 +100,9 @@ tasks:
     preconditions:
       - "[ -n {{.CONTAINER_ENGINE}} ]"
     cmds:
+      - "{{.CONTAINER_ENGINE}} {{.DATABASE_EXEC_COMMAND}} -e \"CREATE DATABASE IF NOT EXISTS $REVIEW_MYSQL_DATABASE;\""
       - for: { var: SQL_FILES }
-        cmd: "{{.CONTAINER_ENGINE}} {{.DATABASE_REDIRECT_COMMAND}} {{.ITEM}}"
-    silent: true
+        cmd: "{{.CONTAINER_ENGINE}} {{.DATABASE_EXEC_COMMAND}} $REVIEW_MYSQL_DATABASE < {{.ITEM}}"
 
   serve:
     desc: Start review server
