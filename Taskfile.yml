@@ -47,14 +47,19 @@ tasks:
       - init
     shopt:
       - globstar
-    cmd: |
-      protoc --proto_path=./api                                           \
-             --proto_path=./third_party                                   \
-             --go_out=paths=source_relative:./api                         \
-             --go-http_out=paths=source_relative:./api                    \
-             --go-grpc_out=paths=source_relative:./api                    \
-             --openapi_out=fq_schema_naming=true,default_response=false:. \
-      api/**/*.proto
+    cmds:
+      - |
+        protoc --proto_path=./api                                           \
+               --proto_path=./third_party                                   \
+               --go_out=paths=source_relative:./api                         \
+               --go-http_out=paths=source_relative:./api                    \
+               --go-grpc_out=paths=source_relative:./api                    \
+               --openapi_out=fq_schema_naming=true,default_response=false:. \
+        api/**/*.proto
+      - |
+        for p in api/**/*.proto; do
+          kratos proto server $p
+        done
     silent: true
 
   wire:
