@@ -1,7 +1,7 @@
 CREATE TABLE review_info (
     `id`              bigint(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `create_by`       varchar(48)         NOT NULL DEFAULT '' COMMENT '创建⽅标识',
-    `update_by`       varchar(48)         NOT NULL DEFAULT '' COMMENT '更新⽅标识',
+    `create_by`       varchar(48)         NOT NULL DEFAULT '' COMMENT '创建方标识',
+    `update_by`       varchar(48)         NOT NULL DEFAULT '' COMMENT '更新方标识',
     `create_at`       timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_at`       timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     `delete_at`       timestamp           COMMENT '逻辑删除标记',
@@ -40,8 +40,8 @@ CREATE TABLE review_info (
 
 CREATE TABLE review_reply_info (
     `id`         bigint(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `create_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '创建⽅标识',
-    `update_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '更新⽅标识',
+    `create_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '创建方标识',
+    `update_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '更新方标识',
     `create_at`  timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_at`  timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     `delete_at`  timestamp           COMMENT '逻辑删除标记',
@@ -65,8 +65,8 @@ CREATE TABLE review_reply_info (
 
 CREATE TABLE review_appeal_info (
     `id`         bigint(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `create_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '创建⽅标识',
-    `update_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '更新⽅标识',
+    `create_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '创建方标识',
+    `update_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '更新方标识',
     `create_at`  timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_at`  timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     `delete_at`  timestamp           COMMENT '逻辑删除标记',
