@@ -1,4 +1,8 @@
-CREATE TABLE review_info (
+CREATE DATABASE IF NOT EXISTS review;
+
+USE review;
+
+CREATE TABLE IF NOT EXISTS review_info (
     `id`              bigint(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
     `create_by`       varchar(48)         NOT NULL DEFAULT '' COMMENT '创建方标识',
     `update_by`       varchar(48)         NOT NULL DEFAULT '' COMMENT '更新方标识',
@@ -38,7 +42,8 @@ CREATE TABLE review_info (
     KEY        `idx_user_id`   (`user_id`)   COMMENT '⽤户id索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='评价表';
 
-CREATE TABLE review_reply_info (
+
+CREATE TABLE IF NOT EXISTS review_reply_info (
     `id`         bigint(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
     `create_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '创建方标识',
     `update_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '更新方标识',
@@ -60,10 +65,10 @@ CREATE TABLE review_reply_info (
     KEY        `idx_delete_at` (`delete_at`) COMMENT '逻辑删除索引',
     KEY        `idx_review_id` (`review_id`) COMMENT '评价id索引',
     KEY        `idx_store_id`  (`store_id`)  COMMENT '店铺id索引'
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='评价商家回复表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='评价商家回复表';
 
 
-CREATE TABLE review_appeal_info (
+CREATE TABLE IF NOT EXISTS review_appeal_info (
     `id`         bigint(32) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
     `create_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '创建方标识',
     `update_by`  varchar(48)         NOT NULL DEFAULT '' COMMENT '更新方标识',
@@ -89,4 +94,4 @@ CREATE TABLE review_appeal_info (
     KEY        `idx_delete_at` (`delete_at`) COMMENT '逻辑删除索引',
     KEY        `idx_appeal_id` (`appeal_id`) COMMENT '申诉id索引',
     KEY        `idx_store_id`  (`store_id`)  COMMENT '店铺id索引'
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='评价商家申诉表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='评价商家申诉表';
