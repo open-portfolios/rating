@@ -3,5 +3,11 @@
         "build.buildFlags": [
             "--tags=wireinject"
         ]
+    },
+    "protobuf-support.protols": {
+        "path": "protols",
+        "args": [
+            "--include-paths=internal,api,third_party"
+        ]
     }
 }
