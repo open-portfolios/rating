@@ -35,6 +35,15 @@ Taskfile uses the YAML format, and you will find it familiar if you have read Gi
 
 *The language we Gophers love*. The [Go](https://go.dev) version of this project is 1.22.
 
+## Deployment
+
+This project uses two types of configuration files:
+
+- [configs/config.yaml](configs/config.yaml) holds non‑sensitive, environment‑agnostic settings (e.g., service endpoints, logging levels, database connection pools). This file is safe to commit to version control and can be shared across team members.
+- .env stores sensitive information such as API secrets, tokens, passwords, or private keys. It is never committed to the repository (see [.gitignore](.gitignore)). Each developer or deployment environment maintains its own `.env` file. An example dotenv file is [.env.example](.env.example).
+
+Keeping secrets out of code and configuration repositories reduces the risk of accidental exposure. It also simplifies environment switching because only the .env file needs to change when moving between staging and production.
+
 ## License 
 
 Copyright 2026 Open Portfolios Authors
