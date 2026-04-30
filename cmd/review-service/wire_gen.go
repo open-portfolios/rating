@@ -14,7 +14,9 @@ import (
 	"github.com/open-portfolios/review/internal/data"
 	"github.com/open-portfolios/review/internal/server"
 	"github.com/open-portfolios/review/internal/service"
+)
 
+import (
 	_ "go.uber.org/automaxprocs"
 )
 
