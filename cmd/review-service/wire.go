@@ -9,6 +9,7 @@ import (
 	"github.com/open-portfolios/review/internal/biz"
 	"github.com/open-portfolios/review/internal/conf"
 	"github.com/open-portfolios/review/internal/data"
+	"github.com/open-portfolios/review/internal/infra"
 	"github.com/open-portfolios/review/internal/server"
 	"github.com/open-portfolios/review/internal/service"
 
@@ -18,6 +19,13 @@ import (
 )
 
 // wireApp init kratos application.
-func wireApp(*conf.Server, *conf.Data, log.Logger) (*kratos.App, func(), error) {
-	panic(wire.Build(server.ProviderSet, data.ProviderSet, biz.ProviderSet, service.ProviderSet, newApp))
+func wireApp(*conf.Server, *conf.Data, *conf.Snowflake, log.Logger) (*kratos.App, func(), error) {
+	panic(wire.Build(
+		server.ProviderSet,
+		data.ProviderSet,
+		biz.ProviderSet,
+		service.ProviderSet,
+		infra.ProviderSet,
+		newApp,
+	))
 }
