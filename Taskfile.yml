@@ -103,6 +103,7 @@ tasks:
       - "{{.CONTAINER_ENGINE}} {{.DATABASE_EXEC_COMMAND}} -e \"CREATE DATABASE IF NOT EXISTS $REVIEW_MYSQL_DATABASE;\""
       - for: { var: SQL_FILES }
         cmd: "{{.CONTAINER_ENGINE}} {{.DATABASE_EXEC_COMMAND}} $REVIEW_MYSQL_DATABASE < {{.ITEM}}"
+      - go run ./cmd/gen
 
   serve:
     desc: Start review server

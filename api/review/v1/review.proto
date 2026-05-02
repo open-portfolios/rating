@@ -31,7 +31,9 @@ message CreateReviewRequest {
   string videoInfo = 8;
   bool anonymous = 9;
 }
-message CreateReviewReply {}
+message CreateReviewReply {
+  int64 reviewID = 1;
+}
 
 message UpdateReviewRequest {}
 message UpdateReviewReply {}

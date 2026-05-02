@@ -132,6 +132,7 @@ func (x *CreateReviewRequest) GetAnonymous() bool {
 
 type CreateReviewReply struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	ReviewID      int64                  `protobuf:"varint,1,opt,name=reviewID,proto3" json:"reviewID,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -164,6 +165,13 @@ func (x *CreateReviewReply) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateReviewReply.ProtoReflect.Descriptor instead.
 func (*CreateReviewReply) Descriptor() ([]byte, []int) {
 	return file_review_v1_review_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateReviewReply) GetReviewID() int64 {
+	if x != nil {
+		return x.ReviewID
+	}
+	return 0
 }
 
 type UpdateReviewRequest struct {
@@ -468,8 +476,9 @@ const file_review_v1_review_proto_rawDesc = "" +
 	"\acontent\x18\x06 \x01(\tR\acontent\x12\x18\n" +
 	"\apicInfo\x18\a \x01(\tR\apicInfo\x12\x1c\n" +
 	"\tvideoInfo\x18\b \x01(\tR\tvideoInfo\x12\x1c\n" +
-	"\tanonymous\x18\t \x01(\bR\tanonymous\"\x13\n" +
-	"\x11CreateReviewReply\"\x15\n" +
+	"\tanonymous\x18\t \x01(\bR\tanonymous\"/\n" +
+	"\x11CreateReviewReply\x12\x1a\n" +
+	"\breviewID\x18\x01 \x01(\x03R\breviewID\"\x15\n" +
 	"\x13UpdateReviewRequest\"\x13\n" +
 	"\x11UpdateReviewReply\"\x15\n" +
 	"\x13DeleteReviewRequest\"\x13\n" +
