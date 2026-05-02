@@ -47,7 +47,9 @@ components:
     schemas:
         api.review.v1.CreateReviewReply:
             type: object
-            properties: {}
+            properties:
+                reviewID:
+                    type: string
         api.review.v1.CreateReviewRequest:
             type: object
             properties:

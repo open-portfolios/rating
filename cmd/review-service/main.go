@@ -63,12 +63,10 @@ func main() {
 		"trace.id", tracing.TraceID(),
 		"span.id", tracing.SpanID(),
 	)
-	c := config.New(
-		config.WithSource(
-			env.NewSource("REVIEW_"),
-			file.NewSource(flagconf),
-		),
-	)
+	c := config.New(config.WithSource(
+		env.NewSource("REVIEW_"),
+		file.NewSource(flagconf),
+	))
 	defer c.Close()
 
 	if err := c.Load(); err != nil {
