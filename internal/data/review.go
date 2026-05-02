@@ -20,9 +20,14 @@ func NewReviewRepo(data *Data, logger log.Logger) biz.ReviewRepo {
 	}
 }
 
-func (repo *reviewRepo) SaveReview(ctx context.Context, review *model.ReviewInfo) (*model.ReviewInfo, error) {
-	if err := repo.data.q.ReviewInfo.WithContext(ctx).Save(review); err != nil {
+func (r *reviewRepo) SaveReview(ctx context.Context, review *model.ReviewInfo) (*model.ReviewInfo, error) {
+	if err := r.data.q.ReviewInfo.WithContext(ctx).Save(review); err != nil {
 		return nil, err
 	}
 	return review, nil
+}
+
+func (r *reviewRepo) GetReviewByOrderID(ctx context.Context, orderID int64) ([]*model.ReviewInfo, error) {
+	t := r.data.q.ReviewInfo
+	return t.WithContext(ctx).Where(t.OrderID.Eq(orderID)).Find()
 }
