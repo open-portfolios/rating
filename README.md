@@ -16,7 +16,7 @@ This project uses [Podman](https://podman.io) as the container engine, but any O
 
 | Recipe     | Effect                                                       |
 | ---------- | ------------------------------------------------------------ |
-| `init`     | Install CLI tools needed for development                     |
+| `install`  | Install CLI tools needed for development                     |
 | `up`       | Compose up containers                                        |
 | `down`     | Shut down containers                                         |
 | `clean`    | Shut down containers and **remove all data** (be careful!)   |
