@@ -3,6 +3,7 @@ module github.com/open-portfolios/review
 go 1.25.0
 
 require (
+	github.com/envoyproxy/protoc-gen-validate v1.3.0
 	github.com/go-kratos/kratos/v2 v2.9.2
 	github.com/google/wire v0.7.0
 	github.com/joho/godotenv v1.5.1

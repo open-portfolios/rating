@@ -43,6 +43,7 @@ vars:
     - --go-http_out=paths=source_relative:./api
     - --go-grpc_out=paths=source_relative:./api
     - --openapi_out=fq_schema_naming=true,default_response=false:.
+    - --validate_out=paths=source_relative,lang=go:./api
   CONTAINER_ENGINE:
     sh: |
       if command -v podman > /dev/null 2>&1; then
@@ -175,14 +176,14 @@ tasks:
   conf:
     desc: Generate configuration protobuf
     deps:
-      - init
+      - install
     cmd: protoc {{.CONF_GENERATION_ARGS | join " "}} {{.INTERNAL_PROTO_FILES}}
     silent: true
 
   api:
     desc: Generate API protobuf
     deps:
-      - init
+      - install
     cmds:
       - protoc {{.API_GENERATION_ARGS | join " "}} {{.API_PROTO_FILES}}
       - for: { var: API_PROTO_FILES }
@@ -192,7 +193,7 @@ tasks:
   wire:
     desc: Generate Dependency Injection code
     deps:
-      - init
+      - install
     cmds:
       - for: { var: WIRE_ENTRYPOINTS }
         cmd: cd "{{.ITEM}}" && wire
