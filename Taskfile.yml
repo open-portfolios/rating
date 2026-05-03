@@ -45,6 +45,7 @@ vars:
     - --go-grpc_out=paths=source_relative:./api
     - --openapi_out=fq_schema_naming=true,default_response=false:.
     - --validate_out=paths=source_relative,lang=go:./api
+    - --go-errors_out=paths=source_relative:./api
   CONTAINER_ENGINE:
     sh: |
       if command -v podman > /dev/null 2>&1; then

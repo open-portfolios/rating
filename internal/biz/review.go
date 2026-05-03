@@ -2,14 +2,11 @@ package biz
 
 import (
 	"context"
-	"errors"
+
+	v1 "github.com/open-portfolios/review/api/review/v1"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/open-portfolios/review/internal/data/model"
-)
-
-var (
-	ErrAlreadyPublished = errors.New("review has beem published already")
 )
 
 type ReviewRepo interface {
@@ -37,10 +34,10 @@ func (uc *ReviewUsecase) CreateReview(ctx context.Context, review *model.ReviewI
 	// Check existence
 	exist, err := uc.repo.GetReviewByOrderID(ctx, review.OrderID)
 	if err != nil {
-		return nil, err
+		return nil, v1.ErrorDatabaseFailure("database failure: %v", err)
 	}
 	if len(exist) > 0 {
-		return nil, ErrAlreadyPublished
+		return nil, v1.ErrorAlreadyReviewed("order %v already reviewed", review.OrderID)
 	}
 
 	// Generate Snowflake ID
