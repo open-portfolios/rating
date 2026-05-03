@@ -61,7 +61,7 @@ vars:
         esac
         echo "$p"
       done
-  BUILDFLAGS: -ldflags "-s -w -X main.Version={{.VERSION}}"
+  BUILDFLAGS: -trimpath -gcflags "-l=4" -ldflags "-s -w -X main.Version={{.VERSION}}"
 
 tasks:
   init:
