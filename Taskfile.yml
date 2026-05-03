@@ -18,6 +18,7 @@ vars:
       protoc-gen-go-http: github.com/go-kratos/kratos/cmd/protoc-gen-go-http/v2
       protoc-gen-openapi: github.com/google/gnostic/cmd/protoc-gen-openapi
       protoc-gen-validate: github.com/envoyproxy/protoc-gen-validate
+      protoc-gen-go-errors: github.com/go-kratos/kratos/cmd/protoc-gen-go-errors/v2
   SQL_FILES:
     sh: shopt -s globstar; for s in sql/**/*.sql; do s=${s//\\//}; echo "$s"; done
   INTERNAL_PROTO_FILES:
