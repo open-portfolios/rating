@@ -50,6 +50,18 @@ vars:
     -p$REVIEW_MYSQL_ROOT_PASSWORD
   CREATE_DATABASE_STATEMENT: >-
     CREATE DATABASE IF NOT EXISTS $REVIEW_MYSQL_DATABASE;
+  EXECUTABLES:
+    sh: |
+      for p in cmd/*; do
+        p=${p//\\//}
+        case "$p" in
+          *gen)
+            continue
+            ;;
+        esac
+        echo "$p"
+      done
+  BUILDFLAGS: -ldflags "-s -w -X main.Version={{.VERSION}}"
 
 tasks:
   init:
@@ -190,5 +202,6 @@ tasks:
     desc: Build executables
     cmds:
       - mkdir -p bin
-      - go build -ldflags "-X main.Version={{.VERSION}}" -o bin/ ./...
+      - for: { var: EXECUTABLES }
+        cmd: go build {{.BUILDFLAGS}} -o bin/ "./{{.ITEM}}"
     silent: true
