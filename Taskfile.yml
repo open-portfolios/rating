@@ -88,21 +88,24 @@ tasks:
     desc: Compose up containers
     preconditions:
       - "[ -n {{.CONTAINER_ENGINE}} ]"
-    cmd: "{{.CONTAINER_ENGINE}} compose up -d 2> /dev/null"
+    cmds:
+      - "{{.CONTAINER_ENGINE}} compose up -d 2> /dev/null"
     silent: true
 
   down:
     desc: Compose down containers
     preconditions:
       - "[ -n {{.CONTAINER_ENGINE}} ]"
-    cmd: "{{.CONTAINER_ENGINE}} compose down 2> /dev/null"
+    cmds:
+      - "{{.CONTAINER_ENGINE}} compose down 2> /dev/null"
     silent: true
 
   clean:
     desc: Compose down containers and delete volumes
     preconditions:
       - "[ -n {{.CONTAINER_ENGINE}} ]"
-    cmd: "{{.CONTAINER_ENGINE}} compose down -v 2> /dev/null"
+    cmds:
+      - "{{.CONTAINER_ENGINE}} compose down -v 2> /dev/null"
     silent: true
 
   database:
@@ -164,7 +167,8 @@ tasks:
 
   serve:
     desc: Start review server
-    cmd: go run ./cmd/review-service
+    cmds:
+      - go run ./cmd/review-service
     silent: true
     interactive: true
 
@@ -179,7 +183,8 @@ tasks:
     desc: Generate configuration protobuf
     deps:
       - install
-    cmd: protoc {{.CONF_GENERATION_ARGS | join " "}} {{.INTERNAL_PROTO_FILES}}
+    cmds:
+      - protoc {{.CONF_GENERATION_ARGS | join " "}} {{.INTERNAL_PROTO_FILES}}
     silent: true
 
   api:
