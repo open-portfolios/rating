@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+>
+> This repository is the old-fashioned monorepo and is no longer maintained. Please see [reviewapis](https://github.com/open-portfolios/reviewapis) for language-agnostic API definition, [review-service](https://github.com/open-portfolios/review-service) for server side, etc.
+>
+> You can [search](https://github.com/search?q=org%3Aopen-portfolios+review&type=repositories) the Open Portfolios organization for related projects.
+
 # review
 
 E-commerce comment review system.
